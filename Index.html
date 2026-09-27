@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>¡Nos Jubilamos! - Festejo en Quinta</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Plus+Jakarta+Sans:wght@500;700;800&family=Segoe+UI:wght@300;400;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+  <style>
+    :root {
+      --bg-sun: #fff7ed;
+      --primary-coral: #ff4757;
+      --primary-orange: #ff7f32;
+      --accent-yellow: #ffd32a;
+      --aqua-pool: #0fbcf9;
+      --aqua-dark: #079992;
+      --win-blue: #004b9b;
+      --win-cyan: #00d2ff;
+      --text-dark: #1e293b;
+      --text-muted: #64748b;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background: radial-gradient(circle at 10% 20%, #fef08a 0%, #fed7aa 25%, #bae6fd 60%, #e0e7ff 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 16px;
+      color: var(--text-dark);
+    }
+
+    /* Contenedor del Celular */
+    .card-wrapper {
+      width: 100%;
+      max-width: 440px;
+      background: #ffffff;
+      border-radius: 36px;
+      padding: 10px;
+      box-shadow: 0 25px 60px -15px rgba(255, 71, 87, 0.25), 0 15px 35px -5px rgba(15, 188, 249, 0.2);
+      border: 3px solid #ff7f32;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card-content {
+      background: linear-gradient(180deg, #fffbeb 0%, #ffffff 25%, #f0fdfa 100%);
+      border-radius: 28px;
+      padding: 24px 20px 28px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Banderines e ilustración superior */
+    .party-banner {
+      width: 100%;
+      height: 28px;
+      position: relative;
+      margin-bottom: 6px;
+    }
+
+    .banner-svg {
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: linear-gradient(90deg, #ff4757, #ff7f32);
+      color: #ffffff;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      box-shadow: 0 4px 12px rgba(255, 71, 87, 0.35);
+      margin-bottom: 12px;
+    }
+
+    .main-title {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 2.2rem;
+      line-height: 1.1;
+      font-weight: 700;
+      color: #ff3838;
+      text-transform: uppercase;
+      text-shadow: 2px 2px 0px #ffeaa7;
+      margin-bottom: 4px;
+    }
+
+    .honoree-box {
+      background: linear-gradient(135deg, #fff3bf 0%, #ffd43b 100%);
+      padding: 10px 16px;
+      border-radius: 18px;
+      display: inline-block;
+      margin-bottom: 14px;
+      box-shadow: 0 4px 15px rgba(255, 212, 59, 0.4);
+      transform: rotate(-1.5deg);
+      border: 2px dashed #f59f00;
+    }
+
+    .honoree-label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: #d9480f;
+      letter-spacing: 0.8px;
+    }
+
+    .honoree-name {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #212529;
+      line-height: 1.1;
+    }
+
+    /* Gráfico Central: Parrillada y Alberca */
+    .party-scene {
+      background: linear-gradient(180deg, #e0f2fe 0%, #38bdf8 100%);
+      border-radius: 20px;
+      padding: 16px 12px;
+      margin: 12px 0;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      border: 2px solid #bae6fd;
+      position: relative;
+      box-shadow: inset 0 2px 6px rgba(0,0,0,0.06);
+    }
+
+    .scene-item {
+      text-align: center;
+    }
+
+    .scene-emoji {
+      font-size: 2.6rem;
+      display: block;
+      filter: drop-shadow(0 4px 6px rgba(0,0,0,0.15));
+      animation: floatItem 3s ease-in-out infinite;
+    }
+
+    .scene-item:nth-child(2) .scene-emoji {
+      animation-delay: 1.5s;
+    }
+
+    @keyframes floatItem {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+    }
+
+    .scene-tag {
+      font-size: 0.78rem;
+      font-weight: 800;
+      color: #075985;
+      background: #ffffff;
+      padding: 3px 8px;
+      border-radius: 10px;
+      margin-top: 4px;
+      display: inline-block;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    /* Badges festivos */
+    .pills-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      justify-content: center;
+      margin: 12px 0;
+    }
+
+    .pill {
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 12px;
+      background: #f1f5f9;
+      color: #475569;
+    }
+    .pill.highlight { background: #fee2e2; color: #dc2626; }
+    .pill.pool { background: #e0f2fe; color: #0284c7; }
+
+    /* Caja de detalles */
+    .event-details {
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 14px;
+      border: 2px solid #fed7aa;
+      margin-bottom: 18px;
+      text-align: left;
+    }
+
+    .detail-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+    .detail-row:last-child { margin-bottom: 0; }
+
+    .detail-icon {
+      font-size: 1.3rem;
+      width: 36px;
+      height: 36px;
+      background: #fff7ed;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .detail-text h4 {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      letter-spacing: 0.5px;
+    }
+
+    .detail-text p {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text-dark);
+    }
+
+    /* Botones de Acción */
+    .actions-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 16px;
+      border-radius: 18px;
+      border: none;
+      font-size: 1.05rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .btn:active {
+      transform: scale(0.97);
+    }
+
+    .btn-confirm {
+      background: linear-gradient(135deg, #0fbcf9 0%, #0078d7 100%);
+      color: #ffffff;
+      box-shadow: 0 8px 24px -4px rgba(0, 120, 215, 0.5);
+      border-bottom: 4px solid #005a9e;
+      position: relative;
+      animation: pulseBtn 2.2s infinite;
+    }
+
+    @keyframes pulseBtn {
+      0%, 100% { box-shadow: 0 8px 24px -4px rgba(0, 120, 215, 0.5); }
+      50% { box-shadow: 0 12px 30px 2px rgba(0, 210, 255, 0.7); }
+    }
+
+    .btn-maps {
+      background: #f8fafc;
+      color: #334155;
+      border: 2px solid #e2e8f0;
+      font-size: 0.95rem;
+      padding: 12px;
+    }
+
+    /* PANTALLA WINDOWS 10 SHUTDOWN (OVERLAY) */
+    .win-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: radial-gradient(circle at center, #005a9e 0%, #002e62 100%);
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+      color: #ffffff;
+      padding: 24px;
+      text-align: center;
+    }
+
+    .win-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* Logo Oficial Windows 10 Isométrico */
+    .win10-logo-wrapper {
+      position: relative;
+      width: 110px;
+      height: 110px;
+      margin-bottom: 30px;
+    }
+
+    .win10-svg {
+      width: 100%;
+      height: 100%;
+      filter: drop-shadow(0 0 16px rgba(0, 210, 255, 0.8));
+      transition: all 1.2s ease;
+    }
+
+    /* Efecto de apagado gradual del logo de Windows 10 */
+    .win-overlay.powering-down .win10-svg {
+      filter: drop-shadow(0 0 0px rgba(0,0,0,0));
+      opacity: 0.18;
+      transform: scale(0.92);
+    }
+
+    /* Spinner Orbital de Windows 10 */
+    .win10-spinner {
+      position: relative;
+      width: 54px;
+      height: 54px;
+      margin-bottom: 24px;
+    }
+
+    .win10-spinner .dot {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transform: rotate(225deg);
+      animation: win10Orbit 5.5s infinite;
+    }
+
+    .win10-spinner .dot:after {
+      content: '';
+      position: absolute;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: #ffffff;
+      box-shadow: 0 0 8px rgba(255,255,255,0.8);
+    }
+
+    .win10-spinner .dot:nth-child(1) { animation-delay: 240ms; }
+    .win10-spinner .dot:nth-child(2) { animation-delay: 480ms; }
+    .win10-spinner .dot:nth-child(3) { animation-delay: 720ms; }
+    .win10-spinner .dot:nth-child(4) { animation-delay: 960ms; }
+    .win10-spinner .dot:nth-child(5) { animation-delay: 1200ms; }
+
+    @keyframes win10Orbit {
+      0% { transform: rotate(225deg); opacity: 1; animation-timing-function: ease-out; }
+      7% { transform: rotate(345deg); animation-timing-function: linear; }
+      30% { transform: rotate(455deg); animation-timing-function: ease-in-out; }
+      39% { transform: rotate(690deg); animation-timing-function: linear; }
+      70% { transform: rotate(815deg); opacity: 1; animation-timing-function: ease-out; }
+      75% { transform: rotate(945deg); animation-timing-function: ease-out; }
+      76% { transform: rotate(945deg); opacity: 0; }
+      100% { transform: rotate(945deg); opacity: 0; }
+    }
+
+    .win-text-title {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      font-size: 1.8rem;
+      font-weight: 300;
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+    }
+
+    .win-text-sub {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      font-size: 1.05rem;
+      color: rgba(255, 255, 255, 0.85);
+      font-weight: 400;
+      min-height: 28px;
+    }
+
+    .win-footer-tag {
+      position: absolute;
+      bottom: 24px;
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.45);
+      letter-spacing: 1px;
+    }
+
+    /* Modal de Confirmación Final */
+    .modal-backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(15, 23, 42, 0.7);
+      backdrop-filter: blur(8px);
+      z-index: 10000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 16px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .modal-backdrop.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-box {
+      background: #ffffff;
+      border-radius: 28px;
+      padding: 28px 22px;
+      width: 100%;
+      max-width: 380px;
+      text-align: center;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.35);
+      border: 3px solid #ff7f32;
+      animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    @keyframes popIn {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .modal-icon {
+      font-size: 3.5rem;
+      margin-bottom: 8px;
+    }
+
+    .modal-title {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 1.6rem;
+      color: #ff3838;
+      margin-bottom: 6px;
+    }
+
+    .modal-msg {
+      font-size: 0.95rem;
+      color: #475569;
+      line-height: 1.4;
+      margin-bottom: 20px;
+    }
+
+    .btn-wa-final {
+      background: #25d366;
+      color: #ffffff;
+      box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
+      border-bottom: 4px solid #1da851;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card-wrapper">
+    <div class="card-content">
+      
+      <!-- Banderines Festivos Decorativos -->
+      <div class="party-banner">
+        <svg class="banner-svg" viewBox="0 0 360 28" fill="none">
+          <path d="M0,4 Q90,20 180,4 Q270,20 360,4" stroke="#e2e8f0" stroke-width="1.5" stroke-dasharray="3,3"/>
+          <polygon points="20,7 35,26 50,7" fill="#ff4757" />
+          <polygon points="70,11 85,27 100,11" fill="#0fbcf9" />
+          <polygon points="120,13 135,28 150,13" fill="#ffd32a" />
+          <polygon points="170,12 185,27 200,12" fill="#2ed573" />
+          <polygon points="220,13 235,28 250,13" fill="#ff7f32" />
+          <polygon points="270,11 285,27 300,11" fill="#9b59b6" />
+          <polygon points="320,7 335,26 350,7" fill="#ff4757" />
+        </svg>
+      </div>
+
+      <div style="text-align: center;">
+        <span class="hero-badge">🌴 Festejo en Petit Comité 🍻</span>
+        <h1 class="main-title">¡Nos Jubilamos!</h1>
+        <p style="font-weight: 700; color: #64748b; font-size: 0.88rem; margin-bottom: 10px;">
+          Se acabó el estrés, apagamos la compu y prendemos el asador.
+        </p>
+
+        <!-- Recuadro del Homenajeado -->
+        <div class="honoree-box">
+          <div class="honoree-label">Celebrando a:</div>
+          <div class="honoree-name" id="view-nombre">Tu Nombre Aquí</div>
+        </div>
+      </div>
+
+      <!-- Escena Alberca + Asador -->
+      <div class="party-scene">
+        <div class="scene-item">
+          <span class="scene-emoji">🥩</span>
+          <span class="scene-tag">Parrillada al 100</span>
+        </div>
+        <div class="scene-item">
+          <span class="scene-emoji">🏊‍♂️</span>
+          <span class="scene-tag">Albercada Total</span>
+        </div>
+        <div class="scene-item">
+          <span class="scene-emoji">🍻</span>
+          <span class="scene-tag">Bebidas Frías</span>
+        </div>
+      </div>
+
+      <!-- Badges -->
+      <div class="pills-container">
+        <span class="pill pool">🩱 Traer traje de baño y toalla</span>
+        <span class="pill highlight">🚫 Prohibido hablar de trabajo</span>
+        <span class="pill">🕶️ Ropa cómoda</span>
+      </div>
+
+      <!-- Tarjeta de Detalles Logísticos -->
+      <div class="event-details">
+        <div class="detail-row">
+          <div class="detail-icon">📅</div>
+          <div class="detail-text">
+            <h4>Fecha</h4>
+            <p id="view-fecha">Sábado, 24 de Octubre</p>
+          </div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-icon">⏰</div>
+          <div class="detail-text">
+            <h4>Hora</h4>
+            <p id="view-hora">A partir de la 1:00 PM</p>
+          </div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-icon">📍</div>
+          <div class="detail-text">
+            <h4>Lugar</h4>
+            <p id="view-lugar">Quinta Campestre</p>
+            <span id="view-dir" style="font-size: 0.8rem; color: #64748b; display: block;">Dirección de la quinta</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Botones de Acción -->
+      <div class="actions-stack">
+        <!-- BOTÓN PRINCIPAL -->
+        <button class="btn btn-confirm" id="btn-iniciar-confirmacion">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+          Confirmar asistencia
+        </button>
+
+        <!-- Botón Ubicación -->
+        <a class="btn btn-maps" id="link-maps" href="#" target="_blank">
+          <span>📍</span> Ver Ubicación en Maps
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- OVERLAY WINDOWS 10 SHUTDOWN -->
+  <div class="win-overlay" id="win-overlay">
+    <!-- Logo Windows 10 Isométrico Oficial -->
+    <div class="win10-logo-wrapper">
+      <svg class="win10-svg" viewBox="0 0 88 88" fill="none">
+        <!-- Ventana superior izquierda -->
+        <polygon points="0,12 36,7 36,41 0,41" fill="#00d2ff"/>
+        <!-- Ventana inferior izquierda -->
+        <polygon points="0,47 36,47 36,81 0,76" fill="#00d2ff"/>
+        <!-- Ventana superior derecha -->
+        <polygon points="42,6 88,0 88,41 42,41" fill="#00d2ff"/>
+        <!-- Ventana inferior derecha -->
+        <polygon points="42,47 88,47 88,88 42,82" fill="#00d2ff"/>
+      </svg>
+    </div>
+
+    <!-- Spinner Orbital -->
+    <div class="win10-spinner">
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+
+    <div class="win-text-title" id="win-title">Cerrando sesión...</div>
+    <div class="win-text-sub" id="win-sub">Guardando recuerdos y cancelando alarmas...</div>
+
+    <div class="win-footer-tag">Windows 10 • Edición Jubilación Definitiva</div>
+  </div>
+
+  <!-- MODAL FINAL CON LINK A WHATSAPP -->
+  <div class="modal-backdrop" id="modal-final">
+    <div class="modal-box">
+      <div class="modal-icon">🎉🥩</div>
+      <h3 class="modal-title">¡MODO JUBILADO ACTIVADO!</h3>
+      <p class="modal-msg">
+        Se cerró la sesión con éxito. Toca el botón para enviar tu confirmación por WhatsApp y apartar tu lugar en la parrillada.
+      </p>
+      <a class="btn btn-wa-final" id="btn-wa-link" href="#" target="_blank">
+        <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/>
+        </svg>
+        Enviar confirmación
+      </a>
+    </div>
+  </div>
+
+  <script>
+    // ============================================================
+    // 👇 EDITA AQUÍ TUS DATOS EXACTOS 👇
+    // ============================================================
+    const DATOS_EVENTO = {
+      nombre: "Carlos Martínez",                       // Nombre del festejado
+      fecha: "Sábado, 24 de Octubre",                  // Fecha del evento
+      hora: "A partir de la 1:30 PM",                  // Hora de inicio
+      lugar: "Quinta Los Laureles",                    // Nombre de la quinta
+      direccion: "Camino a la Quinta #450",            // Referencia o dirección corta
+      linkMaps: "https://maps.google.com",             // Tu enlace corto de Google Maps
+      whatsapp: "528112345678"                         // Teléfono con código de país (52 para México)
+    };
+    // ============================================================
+
+    // Renderizar datos en pantalla
+    document.addEventListener("DOMContentLoaded", () => {
+      document.getElementById("view-nombre").textContent = DATOS_EVENTO.nombre;
+      document.getElementById("view-fecha").textContent = DATOS_EVENTO.fecha;
+      document.getElementById("view-hora").textContent = DATOS_EVENTO.hora;
+      document.getElementById("view-lugar").textContent = DATOS_EVENTO.lugar;
+      document.getElementById("view-dir").textContent = DATOS_EVENTO.direccion;
+      document.getElementById("link-maps").href = DATOS_EVENTO.linkMaps;
+
+      // Generar link de WhatsApp con mensaje precargado
+      const msg = encodeURIComponent(`¡Hola! Confirmo mi asistencia para la parrillada y albercada de jubilación de ${DATOS_EVENTO.nombre} 🥩🏊‍♂️🎉`);
+      document.getElementById("btn-wa-link").href = `https://wa.me/${DATOS_EVENTO.whatsapp}?text=${msg}`;
+    });
+
+    // Sintetizador de audio de Windows Shutdown (Web Audio API)
+    function playWinShutdownSound() {
+      try {
+        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        if (!AudioCtx) return;
+        const ctx = new AudioCtx();
+
+        // Notas características del acorde de Windows
+        const notes = [
+          { freq: 622.25, time: 0.0, dur: 0.6 }, // Eb5
+          { freq: 466.16, time: 0.25, dur: 0.7 }, // Bb4
+          { freq: 369.99, time: 0.55, dur: 0.8 }, // Gb4
+          { freq: 277.18, time: 0.85, dur: 1.4 }  // Db4
+        ];
+
+        notes.forEach(n => {
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+          osc.type = "sine";
+          osc.frequency.setValueAtTime(n.freq, ctx.currentTime + n.time);
+
+          gain.gain.setValueAtTime(0.0001, ctx.currentTime + n.time);
+          gain.gain.exponentialRampToValueAtTime(0.25, ctx.currentTime + n.time + 0.05);
+          gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + n.time + n.dur);
+
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+          osc.start(ctx.currentTime + n.time);
+          osc.stop(ctx.currentTime + n.time + n.dur);
+        });
+      } catch (e) {
+        console.log("Audio no soportado o bloqueado por el navegador");
+      }
+    }
+
+    // Flujo de animación al hacer clic en Confirmar
+    const btnConfirmar = document.getElementById("btn-iniciar-confirmacion");
+    const overlay = document.getElementById("win-overlay");
+    const winTitle = document.getElementById("win-title");
+    const winSub = document.getElementById("win-sub");
+    const modalFinal = document.getElementById("modal-final");
+
+    btnConfirmar.addEventListener("click", () => {
+      // 1. Sonido de Windows
+      playWinShutdownSound();
+
+      // 2. Mostrar pantalla de Windows 10
+      overlay.classList.add("active");
+
+      // 3. Secuencia de mensajes cómicos
+      setTimeout(() => {
+        winTitle.textContent = "Cancelando alarmas de las 6:00 AM...";
+        winSub.textContent = "Borrando correos con asunto 'URGENTE'...";
+      }, 1500);
+
+      setTimeout(() => {
+        overlay.classList.add("powering-down"); // Efecto de apagado del logo
+        winTitle.textContent = "Apagando el sistema...";
+        winSub.textContent = "Iniciando fin de semana infinito...";
+      }, 3000);
+
+      // 4. Quitar pantalla de Windows y mostrar modal festivo con confeti
+      setTimeout(() => {
+        overlay.classList.remove("active");
+        overlay.classList.remove("powering-down");
+        winTitle.textContent = "Cerrando sesión...";
+        winSub.textContent = "Guardando recuerdos y cancelando alarmas...";
+        
+        modalFinal.classList.add("active");
+
+        // Lluvia de confeti festivo
+        if (typeof confetti === 'function') {
+          confetti({ particleCount: 90, spread: 70, origin: { y: 0.6 } });
+          setTimeout(() => confetti({ particleCount: 60, angle: 60, spread: 55, origin: { x: 0 } }), 300);
+          setTimeout(() => confetti({ particleCount: 60, angle: 120, spread: 55, origin: { x: 1 } }), 500);
+        }
+      }, 4500);
+    });
+  </script>
+</body>
+</html>
