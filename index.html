@@ -3,23 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>¡Libre al Fin! - Festejo de Jubilación</title>
+  <title>¡Jubilación Valiente! - Festejo en Quinta</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Fredoka:wght@600;700&family=Plus+Jakarta+Sans:wght@500;700;800&family=Segoe+UI:wght@300;400;600&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
   <style>
     :root {
-      --highland-dark: #0a231c;
-      --highland-forest: #143d30;
-      --highland-emerald: #1c5946;
-      --brave-amber: #e65100;
-      --brave-fire: #ff7043;
-      --celtic-gold: #f59f00;
-      --celtic-gold-light: #ffe066;
-      --wisp-cyan: #00d2ff;
-      --text-light: #f8fafc;
-      --text-dark: #1b2e27;
+      --forest-dark: #0f2d1e;
+      --forest-green: #1b4d3e;
+      --highland-moss: #2d6a4f;
+      --gold-royal: #dfa12b;
+      --gold-light: #fef08a;
+      --brave-orange: #d9480f;
+      --fire-copper: #e8590c;
+      --aqua-pool: #0ea5e9;
+      --card-bg: #fffbf0;
+      --text-dark: #1a2e22;
     }
 
     * {
@@ -30,16 +30,8 @@
       -webkit-tap-highlight-color: transparent;
     }
 
-    /* Fondo con textura Tartán Escocés y Bosque de las Tierras Altas */
     body {
-      background-color: var(--highland-dark);
-      background-image: 
-        radial-gradient(circle at 50% 20%, rgba(28, 89, 70, 0.8) 0%, rgba(10, 35, 28, 0.95) 75%),
-        linear-gradient(rgba(245, 159, 0, 0.04) 2px, transparent 2px),
-        linear-gradient(90deg, rgba(245, 159, 0, 0.04) 2px, transparent 2px),
-        linear-gradient(rgba(230, 81, 0, 0.06) 4px, transparent 4px),
-        linear-gradient(90deg, rgba(230, 81, 0, 0.06) 4px, transparent 4px);
-      background-size: 100% 100%, 60px 60px, 60px 60px, 120px 120px, 120px 120px;
+      background: radial-gradient(circle at 50% 20%, #1e4a38 0%, #0d281a 60%, #05140d 100%);
       min-height: 100vh;
       display: flex;
       justify-content: center;
@@ -48,114 +40,157 @@
       color: var(--text-dark);
     }
 
-    /* Contenedor del Celular con Marco Celta Dorado */
+    /* Marco estilo tapiz y oro celta */
     .card-wrapper {
       width: 100%;
       max-width: 440px;
-      background: linear-gradient(135deg, #f59f00 0%, #b45309 50%, #e65100 100%);
+      background: linear-gradient(145deg, #dfa12b, #8c6211, #ffd43b, #704d08);
       border-radius: 36px;
-      padding: 8px;
-      box-shadow: 0 25px 60px -10px rgba(0, 0, 0, 0.7), 0 0 35px rgba(0, 210, 255, 0.25);
+      padding: 7px;
+      box-shadow: 0 25px 50px -10px rgba(0, 0, 0, 0.7), 0 0 30px rgba(223, 161, 43, 0.3);
       position: relative;
-      overflow: hidden;
     }
 
     .card-content {
-      background: linear-gradient(180deg, #faf7f2 0%, #f4ede2 40%, #e8f4f0 100%);
-      border-radius: 28px;
-      padding: 24px 20px 28px;
+      background: linear-gradient(180deg, #fffcf5 0%, #fdf6e7 40%, #f0fdf4 100%);
+      border-radius: 30px;
+      padding: 24px 18px 28px;
       position: relative;
       overflow: hidden;
-      border: 1px solid rgba(245, 159, 0, 0.3);
+      border: 2px solid #ecd399;
     }
 
-    /* Banderines de las Tierras Altas */
-    .party-banner {
-      width: 100%;
-      height: 28px;
-      position: relative;
-      margin-bottom: 6px;
+    /* Textura de fondo sutil */
+    .card-content::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; height: 120px;
+      background: radial-gradient(ellipse at top, rgba(223, 161, 43, 0.2), transparent 70%);
+      pointer-events: none;
     }
 
-    .banner-svg {
-      width: 100%;
-      height: 100%;
-      overflow: visible;
-    }
-
-    /* Badge Espíritu Valiente */
-    .hero-badge {
+    .header-badge {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      background: linear-gradient(90deg, var(--highland-forest), var(--highland-emerald));
-      color: #ffe066;
-      border: 1px solid #f59f00;
+      background: linear-gradient(90deg, #0f2d1e, #1b4d3e);
+      color: #ffd43b;
       padding: 6px 14px;
       border-radius: 20px;
-      font-size: 0.76rem;
+      font-size: 0.75rem;
       font-weight: 800;
-      letter-spacing: 1px;
+      letter-spacing: 1.5px;
       text-transform: uppercase;
-      box-shadow: 0 4px 12px rgba(10, 35, 28, 0.35);
-      margin-bottom: 12px;
+      border: 1px solid #dfa12b;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      margin-bottom: 8px;
     }
 
     .main-title {
       font-family: 'Cinzel', serif;
       font-size: 2.1rem;
-      line-height: 1.1;
+      line-height: 1.05;
       font-weight: 900;
-      color: #b45309;
-      background: linear-gradient(180deg, #d9480f 0%, #862e07 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      color: #0f2d1e;
       text-transform: uppercase;
+      text-shadow: 1px 1px 0px rgba(223, 161, 43, 0.8);
       margin-bottom: 4px;
-      letter-spacing: 0.5px;
     }
 
-    /* Recuadro del Homenajeado estilo Pergamino Escocés */
-    .honoree-box {
-      background: linear-gradient(135deg, #143d30 0%, #0d2820 100%);
-      padding: 12px 18px;
-      border-radius: 20px;
-      display: inline-block;
-      margin-bottom: 14px;
-      box-shadow: 0 6px 18px rgba(10, 35, 28, 0.4);
-      border: 2px solid #f59f00;
+    .motto {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--fire-copper);
+      font-style: italic;
+      margin-bottom: 12px;
+    }
+
+    /* CONTENEDOR DE LA IMAGEN DEL PERSONAJE */
+    .character-stage {
+      position: relative;
+      margin: 10px auto 14px;
+      width: 170px;
+      height: 170px;
+    }
+
+    .character-frame {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      padding: 6px;
+      background: linear-gradient(135deg, #dfa12b, #d9480f, #ffd43b);
+      box-shadow: 0 10px 25px rgba(217, 72, 15, 0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
       position: relative;
     }
 
+    .character-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+      background: #fdf6e7;
+      border: 3px solid #ffffff;
+    }
+
+    /* Arco decorativo lateral */
+    .bow-badge {
+      position: absolute;
+      bottom: -6px;
+      right: -6px;
+      background: #0f2d1e;
+      color: #ffd43b;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      border: 2px solid #dfa12b;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+    }
+
+    /* Caja de la Homenajeada */
+    .honoree-box {
+      background: linear-gradient(135deg, #0f2d1e 0%, #1b4d3e 100%);
+      padding: 10px 20px;
+      border-radius: 18px;
+      display: inline-block;
+      margin-bottom: 14px;
+      border: 2px solid #dfa12b;
+      box-shadow: 0 6px 16px rgba(15, 45, 30, 0.3);
+    }
+
     .honoree-label {
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       text-transform: uppercase;
-      font-weight: 800;
-      color: var(--brave-fire);
-      letter-spacing: 1.2px;
+      font-weight: 700;
+      color: #ffd43b;
+      letter-spacing: 1px;
     }
 
     .honoree-name {
       font-family: 'Fredoka', sans-serif;
-      font-size: 1.65rem;
+      font-size: 1.55rem;
       font-weight: 700;
       color: #ffffff;
       line-height: 1.1;
-      text-shadow: 0 2px 4px rgba(0,0,0,0.5);
     }
 
-    /* Escena de Parrillada & Alberca estilo Valiente */
+    /* Elementos Fiesta: Alberca y Parrilla estilo Tierras Altas */
     .party-scene {
-      background: linear-gradient(180deg, #1c5946 0%, #0f362a 100%);
+      background: linear-gradient(180deg, #dcfce7 0%, #bae6fd 100%);
       border-radius: 20px;
-      padding: 16px 12px;
+      padding: 14px 10px;
       margin: 12px 0;
       display: flex;
       justify-content: space-around;
       align-items: center;
-      border: 2px solid #e5a93b;
-      position: relative;
-      box-shadow: inset 0 2px 8px rgba(0,0,0,0.3);
+      border: 2px solid #a7f3d0;
+      box-shadow: inset 0 2px 6px rgba(0,0,0,0.05);
     }
 
     .scene-item {
@@ -163,31 +198,21 @@
     }
 
     .scene-emoji {
-      font-size: 2.6rem;
+      font-size: 2.3rem;
       display: block;
-      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
-      animation: floatItem 3.2s ease-in-out infinite;
-    }
-
-    .scene-item:nth-child(2) .scene-emoji {
-      animation-delay: 1.6s;
-    }
-
-    @keyframes floatItem {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-5px); }
+      filter: drop-shadow(0 3px 5px rgba(0,0,0,0.15));
     }
 
     .scene-tag {
-      font-size: 0.75rem;
+      font-size: 0.74rem;
       font-weight: 800;
-      color: #ffffff;
-      background: rgba(230, 81, 0, 0.9);
+      color: #064e3b;
+      background: #ffffff;
       padding: 3px 8px;
       border-radius: 10px;
       margin-top: 4px;
       display: inline-block;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.08);
     }
 
     /* Badges */
@@ -200,25 +225,24 @@
     }
 
     .pill {
-      font-size: 0.74rem;
+      font-size: 0.75rem;
       font-weight: 700;
-      padding: 5px 11px;
-      border-radius: 14px;
-      background: #e2e8f0;
+      padding: 5px 12px;
+      border-radius: 12px;
+      background: #f1f5f9;
       color: #334155;
     }
-    .pill.fire { background: #ffe8cc; color: #d9480f; border: 1px solid #ffd8a8; }
-    .pill.wisp { background: #e0f7fa; color: #00838f; border: 1px solid #b2ebf2; }
+    .pill.pool { background: #e0f2fe; color: #0369a1; border: 1px solid #bae6fd; }
+    .pill.fire { background: #fee2e2; color: #b91c1c; border: 1px solid #fecaca; }
 
-    /* Caja de detalles */
+    /* Tarjeta de Detalles */
     .event-details {
       background: #ffffff;
-      border-radius: 20px;
+      border-radius: 18px;
       padding: 14px;
-      border: 2px solid #e5a93b;
-      margin-bottom: 18px;
+      border: 2px solid #f0dca8;
+      margin-bottom: 16px;
       text-align: left;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
     }
 
     .detail-row {
@@ -230,29 +254,29 @@
     .detail-row:last-child { margin-bottom: 0; }
 
     .detail-icon {
-      font-size: 1.3rem;
-      width: 38px;
-      height: 38px;
-      background: #f4ede2;
-      border: 1px solid #e5a93b;
-      border-radius: 12px;
+      font-size: 1.25rem;
+      width: 36px;
+      height: 36px;
+      background: #fef3c7;
+      border-radius: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
+      border: 1px solid #fde68a;
     }
 
     .detail-text h4 {
       font-size: 0.72rem;
       text-transform: uppercase;
-      color: #78716c;
+      color: #64748b;
       letter-spacing: 0.5px;
     }
 
     .detail-text p {
       font-size: 0.95rem;
-      font-weight: 800;
-      color: var(--text-dark);
+      font-weight: 700;
+      color: #0f2d1e;
     }
 
     /* Botones */
@@ -275,30 +299,31 @@
       gap: 10px;
       cursor: pointer;
       text-decoration: none;
-      transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      transition: all 0.2s ease;
     }
 
     .btn:active {
       transform: scale(0.97);
     }
 
+    /* Botón Confirmar (Destacado y vibrante) */
     .btn-confirm {
-      background: linear-gradient(135deg, #0284c7 0%, #004b9b 100%);
+      background: linear-gradient(135deg, #d9480f 0%, #b83280 50%, #0078d7 100%);
       color: #ffffff;
-      box-shadow: 0 8px 24px -4px rgba(0, 120, 215, 0.5);
-      border-bottom: 4px solid #002e62;
+      box-shadow: 0 8px 25px rgba(217, 72, 15, 0.45);
+      border-bottom: 4px solid #8c2500;
       animation: pulseBtn 2.2s infinite;
     }
 
     @keyframes pulseBtn {
-      0%, 100% { box-shadow: 0 8px 24px -4px rgba(0, 120, 215, 0.5); }
-      50% { box-shadow: 0 12px 30px 2px rgba(0, 210, 255, 0.7); }
+      0%, 100% { box-shadow: 0 8px 25px rgba(217, 72, 15, 0.45); }
+      50% { box-shadow: 0 12px 30px rgba(0, 120, 215, 0.6); }
     }
 
     .btn-maps {
-      background: #143d30;
-      color: #f8fafc;
-      border: 2px solid #e5a93b;
+      background: #f8fafc;
+      color: #1e293b;
+      border: 2px solid #cbd5e1;
       font-size: 0.95rem;
       padding: 12px;
     }
@@ -306,10 +331,8 @@
     /* PANTALLA WINDOWS 10 SHUTDOWN (OVERLAY) */
     .win-overlay {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
       background: radial-gradient(circle at center, #005a9e 0%, #002e62 100%);
       z-index: 9999;
       display: flex;
@@ -324,12 +347,8 @@
       text-align: center;
     }
 
-    .win-overlay.active {
-      opacity: 1;
-      pointer-events: auto;
-    }
+    .win-overlay.active { opacity: 1; pointer-events: auto; }
 
-    /* Logo Oficial Windows 10 Isométrico */
     .win10-logo-wrapper {
       position: relative;
       width: 110px;
@@ -338,8 +357,7 @@
     }
 
     .win10-svg {
-      width: 100%;
-      height: 100%;
+      width: 100%; height: 100%;
       filter: drop-shadow(0 0 16px rgba(0, 210, 255, 0.8));
       transition: all 1.2s ease;
     }
@@ -350,18 +368,15 @@
       transform: scale(0.92);
     }
 
-    /* Spinner Orbital Windows 10 */
     .win10-spinner {
       position: relative;
-      width: 54px;
-      height: 54px;
+      width: 54px; height: 54px;
       margin-bottom: 24px;
     }
 
     .win10-spinner .dot {
       position: absolute;
-      width: 100%;
-      height: 100%;
+      width: 100%; height: 100%;
       opacity: 0;
       transform: rotate(225deg);
       animation: win10Orbit 5.5s infinite;
@@ -370,8 +385,7 @@
     .win10-spinner .dot:after {
       content: '';
       position: absolute;
-      width: 5px;
-      height: 5px;
+      width: 5px; height: 5px;
       border-radius: 50%;
       background: #ffffff;
       box-shadow: 0 0 8px rgba(255,255,255,0.8);
@@ -398,7 +412,6 @@
       font-family: 'Segoe UI', system-ui, sans-serif;
       font-size: 1.8rem;
       font-weight: 300;
-      letter-spacing: 0.5px;
       margin-bottom: 8px;
     }
 
@@ -407,25 +420,14 @@
       font-size: 1.05rem;
       color: rgba(255, 255, 255, 0.85);
       font-weight: 400;
-      min-height: 28px;
     }
 
-    .win-footer-tag {
-      position: absolute;
-      bottom: 24px;
-      font-size: 0.75rem;
-      color: rgba(255,255,255,0.45);
-      letter-spacing: 1px;
-    }
-
-    /* Modal de Confirmación Final */
+    /* Modal Final */
     .modal-backdrop {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: rgba(10, 35, 28, 0.8);
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background: rgba(15, 23, 42, 0.7);
       backdrop-filter: blur(8px);
       z-index: 10000;
       display: flex;
@@ -437,10 +439,7 @@
       transition: opacity 0.3s ease;
     }
 
-    .modal-backdrop.active {
-      opacity: 1;
-      pointer-events: auto;
-    }
+    .modal-backdrop.active { opacity: 1; pointer-events: auto; }
 
     .modal-box {
       background: #ffffff;
@@ -449,34 +448,13 @@
       width: 100%;
       max-width: 380px;
       text-align: center;
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-      border: 3px solid #f59f00;
-      animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.35);
+      border: 3px solid #dfa12b;
     }
 
-    @keyframes popIn {
-      from { transform: scale(0.8); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
-    }
-
-    .modal-icon {
-      font-size: 3.5rem;
-      margin-bottom: 8px;
-    }
-
-    .modal-title {
-      font-family: 'Cinzel', serif;
-      font-size: 1.6rem;
-      color: #b45309;
-      margin-bottom: 6px;
-    }
-
-    .modal-msg {
-      font-size: 0.95rem;
-      color: #475569;
-      line-height: 1.4;
-      margin-bottom: 20px;
-    }
+    .modal-icon { font-size: 3.5rem; margin-bottom: 8px; }
+    .modal-title { font-family: 'Cinzel', serif; font-size: 1.5rem; color: #0f2d1e; margin-bottom: 6px; }
+    .modal-msg { font-size: 0.95rem; color: #475569; margin-bottom: 20px; line-height: 1.4; }
 
     .btn-wa-final {
       background: #25d366;
@@ -491,58 +469,54 @@
   <div class="card-wrapper">
     <div class="card-content">
       
-      <!-- Banderines Estilo Highland Tartan -->
-      <div class="party-banner">
-        <svg class="banner-svg" viewBox="0 0 360 28" fill="none">
-          <path d="M0,4 Q90,20 180,4 Q270,20 360,4" stroke="#d5c8b5" stroke-width="1.5" stroke-dasharray="3,3"/>
-          <polygon points="20,7 35,26 50,7" fill="#143d30" />
-          <polygon points="70,11 85,27 100,11" fill="#e65100" />
-          <polygon points="120,13 135,28 150,13" fill="#f59f00" />
-          <polygon points="170,12 185,27 200,12" fill="#0284c7" />
-          <polygon points="220,13 235,28 250,13" fill="#1c5946" />
-          <polygon points="270,11 285,27 300,11" fill="#ff7043" />
-          <polygon points="320,7 335,26 350,7" fill="#143d30" />
-        </svg>
-      </div>
-
       <div style="text-align: center;">
-        <span class="hero-badge">🏹 Dueña de su Propio Destino 🌲</span>
-        <h1 class="main-title">¡Libre Al Fin!</h1>
-        <p style="font-weight: 700; color: #57534e; font-size: 0.88rem; margin-bottom: 10px;">
-          Se apaga la compu, se enciende la fogata y manda la libertad.
-        </p>
+        <span class="header-badge">🏹 Destino Propio • Festejo Real 🥩</span>
+        <h1 class="main-title">¡Jubilación Valiente!</h1>
+        <p class="motto">"Nuestro destino vive en nosotros, solo debes ser valiente para vivirlo"</p>
 
-        <!-- Recuadro del Homenajeado -->
+        <!-- IMAGEN DEL PERSONAJE (Mérida / Princesa Valiente) -->
+        <div class="character-stage">
+          <div class="character-frame">
+            <!-- 
+              👇 AQUÍ SE CARGA TU IMAGEN:
+              Asegúrate de que el nombre del archivo coincida con el que subiste a GitHub.
+            -->
+            <img class="character-img" id="img-personaje" src="valiente.png" alt="Princesa Valiente" onerror="this.src='https://images.unsplash.com/photo-1534447677768-be436bb09401?w=400&q=80'">
+          </div>
+          <div class="bow-badge">🎯</div>
+        </div>
+
+        <!-- Recuadro de la Homenajeada -->
         <div class="honoree-box">
-          <div class="honoree-label">Celebrando a:</div>
-          <div class="honoree-name" id="view-nombre">Tu Nombre Aquí</div>
+          <div class="honoree-label">Celebrando la libertad de:</div>
+          <div class="honoree-name" id="view-nombre">Nombre de la Festejada</div>
         </div>
       </div>
 
-      <!-- Escena Alberca + Fogata / Asador -->
+      <!-- Parrillada y Albercada -->
       <div class="party-scene">
         <div class="scene-item">
           <span class="scene-emoji">🥩</span>
-          <span class="scene-tag">El Gran Asado</span>
+          <span class="scene-tag">Banquete de Carnes</span>
         </div>
         <div class="scene-item">
           <span class="scene-emoji">🏊‍♀️</span>
-          <span class="scene-tag">Alberca Libre</span>
+          <span class="scene-tag">Albercada Real</span>
         </div>
         <div class="scene-item">
-          <span class="scene-emoji">🍻</span>
-          <span class="scene-tag">Brindis Real</span>
+          <span class="scene-emoji">🍺</span>
+          <span class="scene-tag">Bebidas Heladas</span>
         </div>
       </div>
 
       <!-- Badges -->
       <div class="pills-container">
-        <span class="pill wisp">✨ Traer toalla y traje de baño</span>
-        <span class="pill fire">🔥 Prohibido hablar de trabajo</span>
-        <span class="pill">🏹 Solo buena vibra</span>
+        <span class="pill pool">🩱 Traer traje de baño y toalla</span>
+        <span class="pill fire">🚫 Cero temas de oficina</span>
+        <span class="pill">🍃 Código: Ropa fresca y cómoda</span>
       </div>
 
-      <!-- Tarjeta de Detalles Logísticos -->
+      <!-- Detalles del Evento -->
       <div class="event-details">
         <div class="detail-row">
           <div class="detail-icon">📅</div>
@@ -563,7 +537,7 @@
           <div class="detail-text">
             <h4>Lugar</h4>
             <p id="view-lugar">Quinta Campestre</p>
-            <span id="view-dir" style="font-size: 0.8rem; color: #78716c; display: block;">Dirección o referencia</span>
+            <span id="view-dir" style="font-size: 0.8rem; color: #64748b; display: block;">Dirección de la quinta</span>
           </div>
         </div>
       </div>
@@ -578,7 +552,6 @@
           Confirmar asistencia
         </button>
 
-        <!-- Botón Ubicación -->
         <a class="btn btn-maps" id="link-maps" href="#" target="_blank">
           <span>📍</span> Ver Ubicación en Maps
         </a>
@@ -606,19 +579,17 @@
       <div class="dot"></div>
     </div>
 
-    <div class="win-text-title" id="win-title">Cerrando sesión...</div>
-    <div class="win-text-sub" id="win-sub">Guardando recuerdos y cancelando alarmas...</div>
-
-    <div class="win-footer-tag">Windows 10 • Edición Jubilación Definitiva</div>
+    <div class="win-text-title" id="win-title">Cerrando sesión de trabajo...</div>
+    <div class="win-text-sub" id="win-sub">Disparando la última flecha al checador...</div>
   </div>
 
-  <!-- MODAL FINAL CON LINK A WHATSAPP -->
+  <!-- MODAL FINAL A WHATSAPP -->
   <div class="modal-backdrop" id="modal-final">
     <div class="modal-box">
-      <div class="modal-icon">🏹🔥🥩</div>
-      <h3 class="modal-title">¡DESTINO CONQUISTADO!</h3>
+      <div class="modal-icon">🏹🎉</div>
+      <h3 class="modal-title">¡MODO VALIENTE ACTIVADO!</h3>
       <p class="modal-msg">
-        Sesión laboral cerrada de por vida. Toca el botón para enviar tu confirmación por WhatsApp y apartar tu lugar en la parrillada.
+        Sesión laboral terminada para siempre. Toca el botón para enviar tu confirmación y asegurar tu lugar en el banquete y albercada.
       </p>
       <a class="btn btn-wa-final" id="btn-wa-link" href="#" target="_blank">
         <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24">
@@ -634,17 +605,17 @@
     // 👇 EDITA AQUÍ TUS DATOS EXACTOS 👇
     // ============================================================
     const DATOS_EVENTO = {
-      nombre: "Nombre Aquí",                           // Nombre de la festejada
+      nombre: "Nombre de la Homenajeada",              // Nombre de la festejada
+      archivoImagen: "valiente.png",                   // Nombre exacto del archivo que subiste a GitHub
       fecha: "Sábado, 24 de Octubre",                  // Fecha del evento
       hora: "A partir de la 1:30 PM",                  // Hora de inicio
-      lugar: "Quinta Los Laureles",                    // Nombre de la quinta
-      direccion: "Camino a la Quinta #450",            // Referencia o dirección corta
-      linkMaps: "https://maps.google.com",             // Tu enlace corto de Google Maps
-      whatsapp: "528112345678"                         // Teléfono con código de país (52 para México)
+      lugar: "Quinta Campestre",                       // Nombre de la quinta
+      direccion: "Camino a la Quinta #450",            // Referencia o dirección
+      linkMaps: "https://maps.google.com",             // Link de Google Maps
+      whatsapp: "528112345678"                         // Teléfono con código 52
     };
     // ============================================================
 
-    // Renderizar datos en pantalla
     document.addEventListener("DOMContentLoaded", () => {
       document.getElementById("view-nombre").textContent = DATOS_EVENTO.nombre;
       document.getElementById("view-fecha").textContent = DATOS_EVENTO.fecha;
@@ -652,13 +623,13 @@
       document.getElementById("view-lugar").textContent = DATOS_EVENTO.lugar;
       document.getElementById("view-dir").textContent = DATOS_EVENTO.direccion;
       document.getElementById("link-maps").href = DATOS_EVENTO.linkMaps;
+      document.getElementById("img-personaje").src = DATOS_EVENTO.archivoImagen;
 
-      // Generar link de WhatsApp con mensaje precargado
-      const msg = encodeURIComponent(`¡Hola! Confirmo mi asistencia para celebrar la jubilación de ${DATOS_EVENTO.nombre} 🏹🥩🏊‍♀️`);
+      const msg = encodeURIComponent(`¡Hola! Confirmo mi asistencia para la jubilación al estilo Valiente de ${DATOS_EVENTO.nombre} 🏹🥩🏊‍♀️`);
       document.getElementById("btn-wa-link").href = `https://wa.me/${DATOS_EVENTO.whatsapp}?text=${msg}`;
     });
 
-    // Sintetizador de audio de Windows Shutdown
+    // Sintetizador Web Audio API de Windows Shutdown
     function playWinShutdownSound() {
       try {
         const AudioCtx = window.AudioContext || window.webkitAudioContext;
@@ -692,7 +663,6 @@
       }
     }
 
-    // Flujo de animación al hacer clic en Confirmar
     const btnConfirmar = document.getElementById("btn-iniciar-confirmacion");
     const overlay = document.getElementById("win-overlay");
     const winTitle = document.getElementById("win-title");
@@ -705,28 +675,24 @@
 
       setTimeout(() => {
         winTitle.textContent = "Cancelando alarmas de las 6:00 AM...";
-        winSub.textContent = "Borrando correos con asunto 'URGENTE'...";
+        winSub.textContent = "Borrando correos de la oficina...";
       }, 1500);
 
       setTimeout(() => {
         overlay.classList.add("powering-down");
         winTitle.textContent = "Apagando el sistema...";
-        winSub.textContent = "Iniciando libertad definitiva...";
+        winSub.textContent = "Iniciando libertad absoluta...";
       }, 3000);
 
       setTimeout(() => {
         overlay.classList.remove("active");
         overlay.classList.remove("powering-down");
-        winTitle.textContent = "Cerrando sesión...";
-        winSub.textContent = "Guardando recuerdos y cancelando alarmas...";
-        
         modalFinal.classList.add("active");
 
         if (typeof confetti === 'function') {
-          // Confeti con paleta Valiente: Oro, Naranja fuego, Verde esmeralda y Cyan
-          confetti({ particleCount: 90, spread: 70, origin: { y: 0.6 }, colors: ['#f59f00', '#e65100', '#1c5946', '#00d2ff'] });
-          setTimeout(() => confetti({ particleCount: 60, angle: 60, spread: 55, origin: { x: 0 }, colors: ['#f59f00', '#ff7043', '#00d2ff'] }), 300);
-          setTimeout(() => confetti({ particleCount: 60, angle: 120, spread: 55, origin: { x: 1 }, colors: ['#1c5946', '#e65100', '#ffd43b'] }), 500);
+          confetti({ particleCount: 90, spread: 70, origin: { y: 0.6 } });
+          setTimeout(() => confetti({ particleCount: 60, angle: 60, spread: 55, origin: { x: 0 } }), 300);
+          setTimeout(() => confetti({ particleCount: 60, angle: 120, spread: 55, origin: { x: 1 } }), 500);
         }
       }, 4500);
     });
