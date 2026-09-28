@@ -3,23 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>¡Nos Jubilamos! - Festejo en Quinta</title>
+  <title>¡Libre al Fin! - Festejo de Jubilación</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Plus+Jakarta+Sans:wght@500;700;800&family=Segoe+UI:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Fredoka:wght@600;700&family=Plus+Jakarta+Sans:wght@500;700;800&family=Segoe+UI:wght@300;400;600&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
   <style>
     :root {
-      --bg-sun: #fff7ed;
-      --primary-coral: #ff4757;
-      --primary-orange: #ff7f32;
-      --accent-yellow: #ffd32a;
-      --aqua-pool: #0fbcf9;
-      --aqua-dark: #079992;
-      --win-blue: #004b9b;
-      --win-cyan: #00d2ff;
-      --text-dark: #1e293b;
-      --text-muted: #64748b;
+      --highland-dark: #0a231c;
+      --highland-forest: #143d30;
+      --highland-emerald: #1c5946;
+      --brave-amber: #e65100;
+      --brave-fire: #ff7043;
+      --celtic-gold: #f59f00;
+      --celtic-gold-light: #ffe066;
+      --wisp-cyan: #00d2ff;
+      --text-light: #f8fafc;
+      --text-dark: #1b2e27;
     }
 
     * {
@@ -30,8 +30,16 @@
       -webkit-tap-highlight-color: transparent;
     }
 
+    /* Fondo con textura Tartán Escocés y Bosque de las Tierras Altas */
     body {
-      background: radial-gradient(circle at 10% 20%, #fef08a 0%, #fed7aa 25%, #bae6fd 60%, #e0e7ff 100%);
+      background-color: var(--highland-dark);
+      background-image: 
+        radial-gradient(circle at 50% 20%, rgba(28, 89, 70, 0.8) 0%, rgba(10, 35, 28, 0.95) 75%),
+        linear-gradient(rgba(245, 159, 0, 0.04) 2px, transparent 2px),
+        linear-gradient(90deg, rgba(245, 159, 0, 0.04) 2px, transparent 2px),
+        linear-gradient(rgba(230, 81, 0, 0.06) 4px, transparent 4px),
+        linear-gradient(90deg, rgba(230, 81, 0, 0.06) 4px, transparent 4px);
+      background-size: 100% 100%, 60px 60px, 60px 60px, 120px 120px, 120px 120px;
       min-height: 100vh;
       display: flex;
       justify-content: center;
@@ -40,28 +48,28 @@
       color: var(--text-dark);
     }
 
-    /* Contenedor del Celular */
+    /* Contenedor del Celular con Marco Celta Dorado */
     .card-wrapper {
       width: 100%;
       max-width: 440px;
-      background: #ffffff;
+      background: linear-gradient(135deg, #f59f00 0%, #b45309 50%, #e65100 100%);
       border-radius: 36px;
-      padding: 10px;
-      box-shadow: 0 25px 60px -15px rgba(255, 71, 87, 0.25), 0 15px 35px -5px rgba(15, 188, 249, 0.2);
-      border: 3px solid #ff7f32;
+      padding: 8px;
+      box-shadow: 0 25px 60px -10px rgba(0, 0, 0, 0.7), 0 0 35px rgba(0, 210, 255, 0.25);
       position: relative;
       overflow: hidden;
     }
 
     .card-content {
-      background: linear-gradient(180deg, #fffbeb 0%, #ffffff 25%, #f0fdfa 100%);
+      background: linear-gradient(180deg, #faf7f2 0%, #f4ede2 40%, #e8f4f0 100%);
       border-radius: 28px;
       padding: 24px 20px 28px;
       position: relative;
       overflow: hidden;
+      border: 1px solid rgba(245, 159, 0, 0.3);
     }
 
-    /* Banderines e ilustración superior */
+    /* Banderines de las Tierras Altas */
     .party-banner {
       width: 100%;
       height: 28px;
@@ -75,72 +83,79 @@
       overflow: visible;
     }
 
+    /* Badge Espíritu Valiente */
     .hero-badge {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      background: linear-gradient(90deg, #ff4757, #ff7f32);
-      color: #ffffff;
+      background: linear-gradient(90deg, var(--highland-forest), var(--highland-emerald));
+      color: #ffe066;
+      border: 1px solid #f59f00;
       padding: 6px 14px;
       border-radius: 20px;
-      font-size: 0.78rem;
+      font-size: 0.76rem;
       font-weight: 800;
       letter-spacing: 1px;
       text-transform: uppercase;
-      box-shadow: 0 4px 12px rgba(255, 71, 87, 0.35);
+      box-shadow: 0 4px 12px rgba(10, 35, 28, 0.35);
       margin-bottom: 12px;
     }
 
     .main-title {
-      font-family: 'Fredoka', sans-serif;
-      font-size: 2.2rem;
+      font-family: 'Cinzel', serif;
+      font-size: 2.1rem;
       line-height: 1.1;
-      font-weight: 700;
-      color: #ff3838;
+      font-weight: 900;
+      color: #b45309;
+      background: linear-gradient(180deg, #d9480f 0%, #862e07 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
       text-transform: uppercase;
-      text-shadow: 2px 2px 0px #ffeaa7;
       margin-bottom: 4px;
+      letter-spacing: 0.5px;
     }
 
+    /* Recuadro del Homenajeado estilo Pergamino Escocés */
     .honoree-box {
-      background: linear-gradient(135deg, #fff3bf 0%, #ffd43b 100%);
-      padding: 10px 16px;
-      border-radius: 18px;
+      background: linear-gradient(135deg, #143d30 0%, #0d2820 100%);
+      padding: 12px 18px;
+      border-radius: 20px;
       display: inline-block;
       margin-bottom: 14px;
-      box-shadow: 0 4px 15px rgba(255, 212, 59, 0.4);
-      transform: rotate(-1.5deg);
-      border: 2px dashed #f59f00;
+      box-shadow: 0 6px 18px rgba(10, 35, 28, 0.4);
+      border: 2px solid #f59f00;
+      position: relative;
     }
 
     .honoree-label {
       font-size: 0.72rem;
       text-transform: uppercase;
-      font-weight: 700;
-      color: #d9480f;
-      letter-spacing: 0.8px;
+      font-weight: 800;
+      color: var(--brave-fire);
+      letter-spacing: 1.2px;
     }
 
     .honoree-name {
       font-family: 'Fredoka', sans-serif;
-      font-size: 1.6rem;
+      font-size: 1.65rem;
       font-weight: 700;
-      color: #212529;
+      color: #ffffff;
       line-height: 1.1;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.5);
     }
 
-    /* Gráfico Central: Parrillada y Alberca */
+    /* Escena de Parrillada & Alberca estilo Valiente */
     .party-scene {
-      background: linear-gradient(180deg, #e0f2fe 0%, #38bdf8 100%);
+      background: linear-gradient(180deg, #1c5946 0%, #0f362a 100%);
       border-radius: 20px;
       padding: 16px 12px;
       margin: 12px 0;
       display: flex;
       justify-content: space-around;
       align-items: center;
-      border: 2px solid #bae6fd;
+      border: 2px solid #e5a93b;
       position: relative;
-      box-shadow: inset 0 2px 6px rgba(0,0,0,0.06);
+      box-shadow: inset 0 2px 8px rgba(0,0,0,0.3);
     }
 
     .scene-item {
@@ -150,12 +165,12 @@
     .scene-emoji {
       font-size: 2.6rem;
       display: block;
-      filter: drop-shadow(0 4px 6px rgba(0,0,0,0.15));
-      animation: floatItem 3s ease-in-out infinite;
+      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+      animation: floatItem 3.2s ease-in-out infinite;
     }
 
     .scene-item:nth-child(2) .scene-emoji {
-      animation-delay: 1.5s;
+      animation-delay: 1.6s;
     }
 
     @keyframes floatItem {
@@ -164,18 +179,18 @@
     }
 
     .scene-tag {
-      font-size: 0.78rem;
+      font-size: 0.75rem;
       font-weight: 800;
-      color: #075985;
-      background: #ffffff;
+      color: #ffffff;
+      background: rgba(230, 81, 0, 0.9);
       padding: 3px 8px;
       border-radius: 10px;
       margin-top: 4px;
       display: inline-block;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
     }
 
-    /* Badges festivos */
+    /* Badges */
     .pills-container {
       display: flex;
       flex-wrap: wrap;
@@ -185,24 +200,25 @@
     }
 
     .pill {
-      font-size: 0.75rem;
+      font-size: 0.74rem;
       font-weight: 700;
-      padding: 4px 10px;
-      border-radius: 12px;
-      background: #f1f5f9;
-      color: #475569;
+      padding: 5px 11px;
+      border-radius: 14px;
+      background: #e2e8f0;
+      color: #334155;
     }
-    .pill.highlight { background: #fee2e2; color: #dc2626; }
-    .pill.pool { background: #e0f2fe; color: #0284c7; }
+    .pill.fire { background: #ffe8cc; color: #d9480f; border: 1px solid #ffd8a8; }
+    .pill.wisp { background: #e0f7fa; color: #00838f; border: 1px solid #b2ebf2; }
 
     /* Caja de detalles */
     .event-details {
       background: #ffffff;
-      border-radius: 18px;
+      border-radius: 20px;
       padding: 14px;
-      border: 2px solid #fed7aa;
+      border: 2px solid #e5a93b;
       margin-bottom: 18px;
       text-align: left;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
     }
 
     .detail-row {
@@ -215,10 +231,11 @@
 
     .detail-icon {
       font-size: 1.3rem;
-      width: 36px;
-      height: 36px;
-      background: #fff7ed;
-      border-radius: 10px;
+      width: 38px;
+      height: 38px;
+      background: #f4ede2;
+      border: 1px solid #e5a93b;
+      border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -226,19 +243,19 @@
     }
 
     .detail-text h4 {
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       text-transform: uppercase;
-      color: var(--text-muted);
+      color: #78716c;
       letter-spacing: 0.5px;
     }
 
     .detail-text p {
       font-size: 0.95rem;
-      font-weight: 700;
+      font-weight: 800;
       color: var(--text-dark);
     }
 
-    /* Botones de Acción */
+    /* Botones */
     .actions-stack {
       display: flex;
       flex-direction: column;
@@ -266,11 +283,10 @@
     }
 
     .btn-confirm {
-      background: linear-gradient(135deg, #0fbcf9 0%, #0078d7 100%);
+      background: linear-gradient(135deg, #0284c7 0%, #004b9b 100%);
       color: #ffffff;
       box-shadow: 0 8px 24px -4px rgba(0, 120, 215, 0.5);
-      border-bottom: 4px solid #005a9e;
-      position: relative;
+      border-bottom: 4px solid #002e62;
       animation: pulseBtn 2.2s infinite;
     }
 
@@ -280,9 +296,9 @@
     }
 
     .btn-maps {
-      background: #f8fafc;
-      color: #334155;
-      border: 2px solid #e2e8f0;
+      background: #143d30;
+      color: #f8fafc;
+      border: 2px solid #e5a93b;
       font-size: 0.95rem;
       padding: 12px;
     }
@@ -328,14 +344,13 @@
       transition: all 1.2s ease;
     }
 
-    /* Efecto de apagado gradual del logo de Windows 10 */
     .win-overlay.powering-down .win10-svg {
       filter: drop-shadow(0 0 0px rgba(0,0,0,0));
       opacity: 0.18;
       transform: scale(0.92);
     }
 
-    /* Spinner Orbital de Windows 10 */
+    /* Spinner Orbital Windows 10 */
     .win10-spinner {
       position: relative;
       width: 54px;
@@ -410,7 +425,7 @@
       left: 0;
       width: 100vw;
       height: 100vh;
-      background: rgba(15, 23, 42, 0.7);
+      background: rgba(10, 35, 28, 0.8);
       backdrop-filter: blur(8px);
       z-index: 10000;
       display: flex;
@@ -434,8 +449,8 @@
       width: 100%;
       max-width: 380px;
       text-align: center;
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.35);
-      border: 3px solid #ff7f32;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+      border: 3px solid #f59f00;
       animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 
@@ -450,9 +465,9 @@
     }
 
     .modal-title {
-      font-family: 'Fredoka', sans-serif;
+      font-family: 'Cinzel', serif;
       font-size: 1.6rem;
-      color: #ff3838;
+      color: #b45309;
       margin-bottom: 6px;
     }
 
@@ -476,25 +491,25 @@
   <div class="card-wrapper">
     <div class="card-content">
       
-      <!-- Banderines Festivos Decorativos -->
+      <!-- Banderines Estilo Highland Tartan -->
       <div class="party-banner">
         <svg class="banner-svg" viewBox="0 0 360 28" fill="none">
-          <path d="M0,4 Q90,20 180,4 Q270,20 360,4" stroke="#e2e8f0" stroke-width="1.5" stroke-dasharray="3,3"/>
-          <polygon points="20,7 35,26 50,7" fill="#ff4757" />
-          <polygon points="70,11 85,27 100,11" fill="#0fbcf9" />
-          <polygon points="120,13 135,28 150,13" fill="#ffd32a" />
-          <polygon points="170,12 185,27 200,12" fill="#2ed573" />
-          <polygon points="220,13 235,28 250,13" fill="#ff7f32" />
-          <polygon points="270,11 285,27 300,11" fill="#9b59b6" />
-          <polygon points="320,7 335,26 350,7" fill="#ff4757" />
+          <path d="M0,4 Q90,20 180,4 Q270,20 360,4" stroke="#d5c8b5" stroke-width="1.5" stroke-dasharray="3,3"/>
+          <polygon points="20,7 35,26 50,7" fill="#143d30" />
+          <polygon points="70,11 85,27 100,11" fill="#e65100" />
+          <polygon points="120,13 135,28 150,13" fill="#f59f00" />
+          <polygon points="170,12 185,27 200,12" fill="#0284c7" />
+          <polygon points="220,13 235,28 250,13" fill="#1c5946" />
+          <polygon points="270,11 285,27 300,11" fill="#ff7043" />
+          <polygon points="320,7 335,26 350,7" fill="#143d30" />
         </svg>
       </div>
 
       <div style="text-align: center;">
-        <span class="hero-badge">🌴 Festejo en Petit Comité 🍻</span>
-        <h1 class="main-title">¡Nos Jubilamos!</h1>
-        <p style="font-weight: 700; color: #64748b; font-size: 0.88rem; margin-bottom: 10px;">
-          Se acabó el estrés, apagamos la compu y prendemos el asador.
+        <span class="hero-badge">🏹 Dueña de su Propio Destino 🌲</span>
+        <h1 class="main-title">¡Libre Al Fin!</h1>
+        <p style="font-weight: 700; color: #57534e; font-size: 0.88rem; margin-bottom: 10px;">
+          Se apaga la compu, se enciende la fogata y manda la libertad.
         </p>
 
         <!-- Recuadro del Homenajeado -->
@@ -504,27 +519,27 @@
         </div>
       </div>
 
-      <!-- Escena Alberca + Asador -->
+      <!-- Escena Alberca + Fogata / Asador -->
       <div class="party-scene">
         <div class="scene-item">
           <span class="scene-emoji">🥩</span>
-          <span class="scene-tag">Parrillada al 100</span>
+          <span class="scene-tag">El Gran Asado</span>
         </div>
         <div class="scene-item">
-          <span class="scene-emoji">🏊‍♂️</span>
-          <span class="scene-tag">Albercada Total</span>
+          <span class="scene-emoji">🏊‍♀️</span>
+          <span class="scene-tag">Alberca Libre</span>
         </div>
         <div class="scene-item">
           <span class="scene-emoji">🍻</span>
-          <span class="scene-tag">Bebidas Frías</span>
+          <span class="scene-tag">Brindis Real</span>
         </div>
       </div>
 
       <!-- Badges -->
       <div class="pills-container">
-        <span class="pill pool">🩱 Traer traje de baño y toalla</span>
-        <span class="pill highlight">🚫 Prohibido hablar de trabajo</span>
-        <span class="pill">🕶️ Ropa cómoda</span>
+        <span class="pill wisp">✨ Traer toalla y traje de baño</span>
+        <span class="pill fire">🔥 Prohibido hablar de trabajo</span>
+        <span class="pill">🏹 Solo buena vibra</span>
       </div>
 
       <!-- Tarjeta de Detalles Logísticos -->
@@ -540,7 +555,7 @@
           <div class="detail-icon">⏰</div>
           <div class="detail-text">
             <h4>Hora</h4>
-            <p id="view-hora">A partir de la 1:00 PM</p>
+            <p id="view-hora">A partir de la 1:30 PM</p>
           </div>
         </div>
         <div class="detail-row">
@@ -548,7 +563,7 @@
           <div class="detail-text">
             <h4>Lugar</h4>
             <p id="view-lugar">Quinta Campestre</p>
-            <span id="view-dir" style="font-size: 0.8rem; color: #64748b; display: block;">Dirección de la quinta</span>
+            <span id="view-dir" style="font-size: 0.8rem; color: #78716c; display: block;">Dirección o referencia</span>
           </div>
         </div>
       </div>
@@ -574,21 +589,15 @@
 
   <!-- OVERLAY WINDOWS 10 SHUTDOWN -->
   <div class="win-overlay" id="win-overlay">
-    <!-- Logo Windows 10 Isométrico Oficial -->
     <div class="win10-logo-wrapper">
       <svg class="win10-svg" viewBox="0 0 88 88" fill="none">
-        <!-- Ventana superior izquierda -->
         <polygon points="0,12 36,7 36,41 0,41" fill="#00d2ff"/>
-        <!-- Ventana inferior izquierda -->
         <polygon points="0,47 36,47 36,81 0,76" fill="#00d2ff"/>
-        <!-- Ventana superior derecha -->
         <polygon points="42,6 88,0 88,41 42,41" fill="#00d2ff"/>
-        <!-- Ventana inferior derecha -->
         <polygon points="42,47 88,47 88,88 42,82" fill="#00d2ff"/>
       </svg>
     </div>
 
-    <!-- Spinner Orbital -->
     <div class="win10-spinner">
       <div class="dot"></div>
       <div class="dot"></div>
@@ -606,10 +615,10 @@
   <!-- MODAL FINAL CON LINK A WHATSAPP -->
   <div class="modal-backdrop" id="modal-final">
     <div class="modal-box">
-      <div class="modal-icon">🎉🥩</div>
-      <h3 class="modal-title">¡MODO JUBILADA ACTIVADO!</h3>
+      <div class="modal-icon">🏹🔥🥩</div>
+      <h3 class="modal-title">¡DESTINO CONQUISTADO!</h3>
       <p class="modal-msg">
-        Se cerró la sesión con éxito. Toca el botón para enviar tu confirmación por WhatsApp y apartar tu lugar en la parrillada.
+        Sesión laboral cerrada de por vida. Toca el botón para enviar tu confirmación por WhatsApp y apartar tu lugar en la parrillada.
       </p>
       <a class="btn btn-wa-final" id="btn-wa-link" href="#" target="_blank">
         <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24">
@@ -625,13 +634,13 @@
     // 👇 EDITA AQUÍ TUS DATOS EXACTOS 👇
     // ============================================================
     const DATOS_EVENTO = {
-      nombre: "Susy Arrieta",                       // Nombre del festejado
-      fecha: "Viernes, 2 de Octubre",                  // Fecha del evento
-      hora: "A partir de la 4:30 PM",                  // Hora de inicio
-      lugar: "Quinta Sarah Maria",                    // Nombre de la quinta
-      direccion: "Camino Real y Paulo VI, Camino Real",            // Referencia o dirección corta
-      linkMaps: "https://maps.app.goo.gl/aJQuARpLdiTvBpPe7?g_st=ic",             // Tu enlace corto de Google Maps
-      whatsapp: "528112034638"                         // Teléfono con código de país (52 para México)
+      nombre: "Nombre Aquí",                           // Nombre de la festejada
+      fecha: "Sábado, 24 de Octubre",                  // Fecha del evento
+      hora: "A partir de la 1:30 PM",                  // Hora de inicio
+      lugar: "Quinta Los Laureles",                    // Nombre de la quinta
+      direccion: "Camino a la Quinta #450",            // Referencia o dirección corta
+      linkMaps: "https://maps.google.com",             // Tu enlace corto de Google Maps
+      whatsapp: "528112345678"                         // Teléfono con código de país (52 para México)
     };
     // ============================================================
 
@@ -645,23 +654,22 @@
       document.getElementById("link-maps").href = DATOS_EVENTO.linkMaps;
 
       // Generar link de WhatsApp con mensaje precargado
-      const msg = encodeURIComponent(`¡Hola! Confirmo mi asistencia para la parrillada y albercada de jubilación de ${DATOS_EVENTO.nombre} 🥩🏊‍♂️🎉`);
+      const msg = encodeURIComponent(`¡Hola! Confirmo mi asistencia para celebrar la jubilación de ${DATOS_EVENTO.nombre} 🏹🥩🏊‍♀️`);
       document.getElementById("btn-wa-link").href = `https://wa.me/${DATOS_EVENTO.whatsapp}?text=${msg}`;
     });
 
-    // Sintetizador de audio de Windows Shutdown (Web Audio API)
+    // Sintetizador de audio de Windows Shutdown
     function playWinShutdownSound() {
       try {
         const AudioCtx = window.AudioContext || window.webkitAudioContext;
         if (!AudioCtx) return;
         const ctx = new AudioCtx();
 
-        // Notas características del acorde de Windows
         const notes = [
-          { freq: 622.25, time: 0.0, dur: 0.6 }, // Eb5
-          { freq: 466.16, time: 0.25, dur: 0.7 }, // Bb4
-          { freq: 369.99, time: 0.55, dur: 0.8 }, // Gb4
-          { freq: 277.18, time: 0.85, dur: 1.4 }  // Db4
+          { freq: 622.25, time: 0.0, dur: 0.6 },
+          { freq: 466.16, time: 0.25, dur: 0.7 },
+          { freq: 369.99, time: 0.55, dur: 0.8 },
+          { freq: 277.18, time: 0.85, dur: 1.4 }
         ];
 
         notes.forEach(n => {
@@ -680,7 +688,7 @@
           osc.stop(ctx.currentTime + n.time + n.dur);
         });
       } catch (e) {
-        console.log("Audio no soportado o bloqueado por el navegador");
+        console.log("Audio no disponible");
       }
     }
 
@@ -692,25 +700,20 @@
     const modalFinal = document.getElementById("modal-final");
 
     btnConfirmar.addEventListener("click", () => {
-      // 1. Sonido de Windows
       playWinShutdownSound();
-
-      // 2. Mostrar pantalla de Windows 10
       overlay.classList.add("active");
 
-      // 3. Secuencia de mensajes cómicos
       setTimeout(() => {
         winTitle.textContent = "Cancelando alarmas de las 6:00 AM...";
         winSub.textContent = "Borrando correos con asunto 'URGENTE'...";
       }, 1500);
 
       setTimeout(() => {
-        overlay.classList.add("powering-down"); // Efecto de apagado del logo
+        overlay.classList.add("powering-down");
         winTitle.textContent = "Apagando el sistema...";
-        winSub.textContent = "Iniciando fin de semana infinito...";
+        winSub.textContent = "Iniciando libertad definitiva...";
       }, 3000);
 
-      // 4. Quitar pantalla de Windows y mostrar modal festivo con confeti
       setTimeout(() => {
         overlay.classList.remove("active");
         overlay.classList.remove("powering-down");
@@ -719,11 +722,11 @@
         
         modalFinal.classList.add("active");
 
-        // Lluvia de confeti festivo
         if (typeof confetti === 'function') {
-          confetti({ particleCount: 90, spread: 70, origin: { y: 0.6 } });
-          setTimeout(() => confetti({ particleCount: 60, angle: 60, spread: 55, origin: { x: 0 } }), 300);
-          setTimeout(() => confetti({ particleCount: 60, angle: 120, spread: 55, origin: { x: 1 } }), 500);
+          // Confeti con paleta Valiente: Oro, Naranja fuego, Verde esmeralda y Cyan
+          confetti({ particleCount: 90, spread: 70, origin: { y: 0.6 }, colors: ['#f59f00', '#e65100', '#1c5946', '#00d2ff'] });
+          setTimeout(() => confetti({ particleCount: 60, angle: 60, spread: 55, origin: { x: 0 }, colors: ['#f59f00', '#ff7043', '#00d2ff'] }), 300);
+          setTimeout(() => confetti({ particleCount: 60, angle: 120, spread: 55, origin: { x: 1 }, colors: ['#1c5946', '#e65100', '#ffd43b'] }), 500);
         }
       }, 4500);
     });
